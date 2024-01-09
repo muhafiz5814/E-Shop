@@ -1,7 +1,9 @@
 /** Require packages and routers. */
+require('dotenv').config()
 const express = require("express")
 const bodyParser = require("body-parser")
 const authRouter = require("./routes/auth.js")
+const mongoose = require("mongoose")
 
 /** Create an express app. */
 const app = express()
@@ -16,6 +18,8 @@ app.use("/", authRouter)
 
 /** Use EJS as the view engine to render ejs files to browser. */
 app.set("view engine", "ejs")
+
+mongoose.connect(process.env.MONGODB_CONNECTING_STRING)
 
 /** GET route to home/starting page. */
 app.get("/", (req, res) => {
