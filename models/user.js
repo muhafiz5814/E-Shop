@@ -6,7 +6,11 @@ const userSchema = new mongoose.Schema({
     last_name: String,
     email: String,
     password: String,
-    user_type: { enum: [ "buyer", "seller"] },
+    user_type: { 
+        type: String,
+        enum: ["buyer", "seller"],
+        default: "buyer"
+    },
     is_active: Boolean,
     wallet_balance: Number,
     created_at: Date,
