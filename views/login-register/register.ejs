@@ -12,12 +12,12 @@
                 <!-- Makes POST request to /register route -->
                 <form action="/register" method="POST">
                   <div class="form-group">
-                    <label for="password">First Name</label>
-                    <input type="password" class="form-control" name="firstName">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName">
                   </div>
                   <div class="form-group">
-                    <label for="password">Last Name</label>
-                    <input type="password" class="form-control" name="lastName">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName">
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
@@ -29,10 +29,7 @@
                   </div>
 
                   <!-- Create hidden inputs and send values to server to insert in database on register. -->
-                  <input type="hidden" name="type" value="<%= values.userType %>">
-                  <input type="hidden" name="is-active" value="active">
-                  <input type="hidden" name="wallet-balance" value="10">
-                  <input type="hidden" name="creation-date" value="<%= values.creationDate %>">
+                  <input type="hidden" name="type" value="<%= userType %>">
                   <button type="submit" class="btn btn-dark mt-3">Register</button>
                 </form>
       

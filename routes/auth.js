@@ -13,32 +13,22 @@ passport.deserializeUser(User.deserializeUser())
 
 /** GET request to render login Page. */
 router.get("/login", (req, res) => {
-    res.render("login-register/login")
+    res.render("login-register/login", {userType: "buyer"})
 })
 
 /** GET request to render register Page */
 router.get("/register", (req, res) => {
-
-    const hiddenValues = {
-        userType: "buyer",
-        creationDate: new Date()
-    }
-
-    res.render("login-register/register", {values: hiddenValues})
+    res.render("login-register/register", {userType: "buyer"})
 })
 
 /** GET request to render seller's login Page. */
 router.get("/seller/login", (req, res) => {
-    res.render("login-register/login")
+    res.render("login-register/login", {userType: "seller"})
 })
 
 /** GET request to render seller's register Page */
-router.get("seller/register", (req, res) => {
-    const hiddenValues = {
-        userType: "seller",
-        creationDate: new Date()
-    }
-    res.render("login-register/register", {values: hiddenValues})
+router.get("/seller/register", (req, res) => {
+    res.render("login-register/register", {userType: "seller"})
 })
 
 /** Temporary get routes for home pages to test authentication */
@@ -70,7 +60,7 @@ router.post("/register", (req, res) => {
             res.redirect("/register")
         } else {
             passport.authenticate("local")(req, res, () => {
-                if(req.body.type == "buyer"){
+                if(req.body.type === "buyer"){
                     res.redirect("/buyerhome")
                 } else {
                     res.redirect("/sellerhome")
@@ -93,7 +83,11 @@ router.post("/login", (req, res) => {
             res.redirect("/login")
         } else {
             passport.authenticate("local")(req, res, () => {
-                res.redirect("/buyerhome")
+                if(req.body.type === "buyer") {
+                    res.redirect("/buyerhome")
+                } else {
+                    res.redirect("/sellerhome")
+                }
             })
         }
     })
