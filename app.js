@@ -2,10 +2,13 @@
 require('dotenv').config()
 const express = require("express")
 const bodyParser = require("body-parser")
-const authRouter = require("./routes/auth.js")
 const mongoose = require("mongoose")
 const passport = require("passport")
 const session = require("express-session")
+
+const loginRouter = require("./routes/login.routes.js")
+const authRouter = require("./routes/auth.routes.js")
+const productsRouter = require("./routes/products.routes.js")
 
 /** Create an express app. */
 const app = express()
@@ -35,7 +38,9 @@ app.use(passport.session())
 mongoose.connect(process.env.MONGODB_CONNECTING_STRING)
 
 /** Direct all the authentication related routes to authRouter. */
+app.use("/", loginRouter)
 app.use("/", authRouter)
+app.use("/", productsRouter)
 
 /** GET route to home/starting page. */
 app.get("/", (req, res) => {

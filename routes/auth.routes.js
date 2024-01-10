@@ -1,6 +1,5 @@
 const express = require("express")
 const passport = require("passport")
-const passportLocalMongoose = require("passport-local-mongoose")
 const User = require("../models/user.js")
 
 /** Create express router */
@@ -10,37 +9,6 @@ passport.use(User.createStrategy())
 
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
-
-/** GET request to render login Page. */
-router.get("/login", (req, res) => {
-    res.render("login-register/login", {userType: "buyer"})
-})
-
-/** GET request to render register Page */
-router.get("/register", (req, res) => {
-    res.render("login-register/register", {userType: "buyer"})
-})
-
-/** GET request to render seller's login Page. */
-router.get("/seller/login", (req, res) => {
-    res.render("login-register/login", {userType: "seller"})
-})
-
-/** GET request to render seller's register Page */
-router.get("/seller/register", (req, res) => {
-    res.render("login-register/register", {userType: "seller"})
-})
-
-/** Temporary get routes for home pages to test authentication */
-router.get("/buyerhome", (req, res) => {
-    res.json({message: "This is buyer Home"})
-})
-
-router.get("/sellerhome", (req, res) => {
-    res.json({message: "This is Seller Home"})
-})
-
-
 
 router.post("/register", (req, res) => {
 
@@ -61,9 +29,9 @@ router.post("/register", (req, res) => {
         } else {
             passport.authenticate("local")(req, res, () => {
                 if(req.body.type === "buyer"){
-                    res.redirect("/buyerhome")
+                    res.redirect("/products")
                 } else {
-                    res.redirect("/sellerhome")
+                    res.redirect("/seller/products")
                 }
             })
         }
@@ -84,9 +52,9 @@ router.post("/login", (req, res) => {
         } else {
             passport.authenticate("local")(req, res, () => {
                 if(req.body.type === "buyer") {
-                    res.redirect("/buyerhome")
+                    res.redirect("/products")
                 } else {
-                    res.redirect("/sellerhome")
+                    res.redirect("/seller/products")
                 }
             })
         }
