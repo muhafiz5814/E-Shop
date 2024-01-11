@@ -9,6 +9,7 @@ const session = require("express-session")
 const loginRouter = require("./routes/login.routes.js")
 const authRouter = require("./routes/auth.routes.js")
 const productsRouter = require("./routes/products.routes.js")
+const sellerProductsRouter = require("./routes/seller-products.routes.js")
 
 /** Create an express app. */
 const app = express()
@@ -41,6 +42,7 @@ mongoose.connect(process.env.MONGODB_CONNECTING_STRING)
 app.use("/", loginRouter)
 app.use("/", authRouter)
 app.use("/", productsRouter)
+app.use("/", sellerProductsRouter)
 
 /** GET route to home/starting page. */
 app.get("/", (req, res) => {
