@@ -1,16 +1,11 @@
 <%- include("partials/header") %>
 
 <body>
-    <div class="text-center mt-5">
-        <a class="btn btn-secondary" href="/seller/products/add" role="button">Add Product</a>
-      </div>
-
       <div class="album py-5 bg-body-tertiary">
         <div class="container">
             <!-- Check if products array is empty or not -->
             <% if (products) { %>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            
                     <% products.forEach(product => { %>
                         <div class="col">
                             <div class="card shadow-sm">
@@ -18,22 +13,23 @@
                               <div class="card-body">
                                 <p class="card-text"><%= product.description %></p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                  <small class="text-body-secondary">Price: $<%= product.price %></small>
+                                  <small class="text-body-secondary">Price: $<%= product.selling_price %></small>
                                   <div class="btn-group">
                                     <a class="btn btn-primary" href="/seller/products/update/<%= product._id %>" role="button">Update</a>
+                                    <a class="btn btn-danger" href="/seller/products/delete/<%= product._id %>" role="button">Delete</a>
                                   </div>
                                 </div>
                               </div>
                             </div>
                         </div>
                     <% }) %>
-                    
                 </div>
             <% } %>
-
-          
-
         </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <a class="btn btn-secondary" href="/seller/products/add" role="button">Add Product</a>
       </div>
 </body>
 </html>

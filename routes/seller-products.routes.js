@@ -62,7 +62,17 @@ router.post("/seller/products/update/:id", async (req, res) => {
         res.redirect("/seller/products")
     } catch (error) {
         console.log(error)
-        res.status(500).send("Unable to update product. Internal Server Error!")
+        res.status(500).send("Unable to update product, Internal Server Error!")
+    }
+})
+
+router.get("/seller/products/delete/:id", async (req, res) => {
+    try {
+        await Product.findByIdAndDelete(req.params.id)
+        res.redirect("/seller/products")
+    } catch (error) {
+        console.log(error)
+        res.status(500).send("Unable to delete product, Internal Server Error!")
     }
 })
 
