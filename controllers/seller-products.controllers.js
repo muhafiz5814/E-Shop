@@ -2,7 +2,7 @@ const Product = require("../models/product.js")
 const ProductCategory = require("../models/product-category.js")
 
 const showProducts = async (req, res) => {
-    const allProducts = await Product.find({})
+    const allProducts = await Product.find({created_by: req.user._id})
     res.render("dashboard", {products: allProducts})
 }
 
