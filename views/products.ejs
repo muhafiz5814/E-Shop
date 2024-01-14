@@ -1,10 +1,24 @@
 <%- include("partials/header") %>
 
 <body>
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/products" class="nav-link px-2 text-white">Home</a></li>
+                </ul>
+    
+                <div class="text-end">
+                    <a class="btn btn-outline-light me-2" href="/logout" role="button" name="buyer" value="buyer">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
     <main>
 
-        <section class="py-5 text-center container">
-          <div class="row py-lg-5">
+        <section class="py-3 text-center container">
+          <div class="row pb-lg-3">
             <div class="col-lg-6 col-md-8 mx-auto">
               <h1 class="fw-light">E-Shop</h1>
               <p class="lead text-body-secondary">One platform for all of your needs of Electronics, Apparels and Footwears.</p>

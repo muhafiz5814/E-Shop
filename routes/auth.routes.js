@@ -61,5 +61,13 @@ router.post("/login", (req, res) => {
     })
 })
 
+router.get('/logout', (req, res, next) => {
+    // Below logout() method is from passport
+    req.logout(function(err) {
+      if (err) { return next(err); }
+      res.redirect('/')
+    })
+})
+
 /** Export router to use in app.js. */
 module.exports = router
