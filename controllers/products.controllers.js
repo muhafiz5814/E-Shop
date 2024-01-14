@@ -1,5 +1,6 @@
 /** Import required model */
 const Product = require("../models/product.js")
+const ProductCategory = require("../models/product-category.js")
 
 const showProducts = async (req, res) => {
 
@@ -46,7 +47,20 @@ const showProducts = async (req, res) => {
     })
 }
 
+/** Get the Product */
+const getProduct = async (req, res) => {
+    const product = await Product.findById(req.params.id)
+    // Get product category
+    const productCategory = await ProductCategory.findById(product.category_id)
+    // Send both, product and category to render
+    res.render("product-add-update/show-product", {
+        product: product,
+        category: productCategory.category_name
+    })
+}
+
 /** Export all the controllers */
 module.exports = {
-    showProducts
+    showProducts,
+    getProduct
 }

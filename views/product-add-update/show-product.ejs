@@ -1,0 +1,30 @@
+<!-- Include header partials so that styling can be applied using bootstrap. -->
+<%- include("../partials/header") %>
+
+<body>
+    <!-- Add card to show product details -->
+    <div class="text-center mx-5">
+        <div class="card mt-5" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= product.title %></h5>
+              <p class="card-text"><%= product.description %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <% if (product.stock_count === 0) { %>
+                    Out of stock
+                <% } else { %>
+                    In stock 
+                <% } %>
+              </li>
+              <li class="list-group-item">Category: <%= category %></li>
+              <li class="list-group-item">Price: $<%= product.selling_price %></li>
+            </ul>
+            <!-- Send request to /purchase-transaction route to buy the product. -->
+            <div class="card-body">
+              <a href="/purchase-transaction" class="btn btn-primary">Buy</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
