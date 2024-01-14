@@ -43,7 +43,26 @@
                     </div>
                 <% } %>
             </div>
-          </div>
+        </div>
+        <br>
+
+        <!-- Show the total pages to navigate. -->
+        <div class="text-center">
+            <!-- If we are not on first page, only then show Prev link to go to previous page -->
+            <% if(currentPage != 1) { %>
+                <a href="?page=<%= currentPage - 1 %>">Prev</a>
+            <% } %>
+
+            <!-- Show the pages to navigate. -->
+            <% for (let i = 1; i <= totalPages; i++) { %>
+                <a href="?page=<%= i %>"><%= i %></a>
+            <% } %>
+
+            <!-- If we are on last page, do not show the Next link to go to next page -->
+            <% if(currentPage < totalPages) { %>
+                <a href="?page=<%= currentPage + 1 %>">Next</a>
+            <% } %>
+        </div>
 
       </main>
 </body>
