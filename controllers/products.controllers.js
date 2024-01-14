@@ -1,3 +1,4 @@
+/** Import required model */
 const Product = require("../models/product.js")
 
 const showProducts = async (req, res) => {
@@ -45,6 +46,7 @@ const showProducts = async (req, res) => {
     })
 }
 
+/** Export all the controllers */
 module.exports = {
     showProducts
 }

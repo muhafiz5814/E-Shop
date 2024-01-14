@@ -1,15 +1,19 @@
+/** Import required models */
 const Product = require("../models/product.js")
 const ProductCategory = require("../models/product-category.js")
 
+/** Show all the products added buy logged in user. */
 const showProducts = async (req, res) => {
     const allProducts = await Product.find({created_by: req.user._id})
     res.render("dashboard", {products: allProducts})
 }
 
+/** Render the add product form. */
 const renderAddProduct = (req, res) => {
     res.render("product-add-update/add-product")
 }
 
+/** Add new product to database. */
 const addProduct = async (req, res) => {
 
     const newProduct = new Product({
@@ -32,6 +36,7 @@ const addProduct = async (req, res) => {
     }
 }
 
+/** Render the update product form. */
 const renderUpdateProduct = async (req, res) => {
     // Do not need to convert id into ObjectId, mongoose will still get the result if we provide it in string form.
     const id = req.params.id
@@ -40,8 +45,8 @@ const renderUpdateProduct = async (req, res) => {
 
 }
 
+/** Update the product details in database. */
 const updateProduct = async (req, res) => {
-     
     try {
         await Product.findByIdAndUpdate({_id: req.params.id}, {
             is_active: (req.body.is_active === "true") ? true : false,
@@ -60,6 +65,7 @@ const updateProduct = async (req, res) => {
     }
 }
 
+/** Delete the product. */
 const deleteProduct = async (req, res) => {
     try {
         await Product.findByIdAndDelete(req.params.id)
@@ -70,6 +76,7 @@ const deleteProduct = async (req, res) => {
     }
 }
 
+/** Export all the controllers */
 module.exports = {
     showProducts,
     renderAddProduct,
