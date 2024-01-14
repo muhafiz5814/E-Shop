@@ -45,6 +45,8 @@ router.get("/products", async (req, res) => {
         totalPages: Math.ceil(count/limit),
         currentPage: page
     })
+
+    document.getElementById("search").get
 })
 
 module.exports = router

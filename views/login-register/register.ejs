@@ -1,3 +1,4 @@
+<!-- Include header partials so that styling can be applied using bootstrap. -->
 <%- include("../partials/header") %>
 
 <body>
@@ -8,7 +9,6 @@
           <div class="col-sm-6">
             <div class="card">
               <div class="card-body">
-      
                 <!-- Makes POST request to /register route -->
                 <form action="/register" method="POST">
                   <div class="form-group">
@@ -29,6 +29,7 @@
                   </div>
 
                   <!-- Create hidden inputs and send values to server to insert in database on register. -->
+                  <!-- Hidden input element to know the type of user, because same register.ejs file is getting used for both the users(buyer and seller). -->
                   <input type="hidden" name="type" value="<%= userType %>">
                   <button type="submit" class="btn btn-dark mt-3">Register</button>
                 </form>

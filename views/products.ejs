@@ -1,14 +1,14 @@
+<!-- Include header partials so that styling can be applied using bootstrap. -->
 <%- include("partials/header") %>
 
 <body>
+    <!-- Add header to link Home page and Logout. -->
     <header class="p-3 text-bg-dark">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-    
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="/products" class="nav-link px-2 text-white">Home</a></li>
                 </ul>
-    
                 <div class="text-end">
                     <a class="btn btn-outline-light me-2" href="/logout" role="button" name="buyer" value="buyer">Logout</a>
                 </div>
@@ -16,16 +16,16 @@
         </div>
     </header>
     <main>
-
+        <!-- Add section to Highlight the brand name and purpose. -->
         <section class="py-3 text-center container">
           <div class="row pb-lg-3">
             <div class="col-lg-6 col-md-8 mx-auto">
               <h1 class="fw-light">E-Shop</h1>
-              <p class="lead text-body-secondary">One platform for all of your needs of Electronics, Apparels and Footwears.</p>
+              <p class="lead text-body-secondary">One platform for all your needs of Electronics, Apparels and Footwears.</p>
             </div>
           </div>
         </section>
-
+        <!-- Add search section to search for the product. -->
         <section>
             <div class="text-center">
                 <form>
@@ -33,14 +33,15 @@
                     <input type="submit" value="Search">
                 </form>
             </div>
-            
         </section>
       
         <div class="album py-5 bg-body-tertiary">
             <div class="container">
                 <!-- Check if products array is empty or not -->
+                <!-- If the array is not empty then show all the products. -->
                 <% if (products) { %>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <!-- Loop through each product and show details. -->
                         <% products.forEach(product => { %>
                             <div class="col">
                                 <div class="card shadow-sm">
@@ -59,25 +60,21 @@
             </div>
         </div>
         <br>
-
         <!-- Show the total pages to navigate. -->
         <div class="text-center">
             <!-- If we are not on first page, only then show Prev link to go to previous page -->
             <% if(currentPage != 1) { %>
                 <a href="?page=<%= currentPage - 1 %>">Prev</a>
             <% } %>
-
             <!-- Show the pages to navigate. -->
             <% for (let i = 1; i <= totalPages; i++) { %>
                 <a href="?page=<%= i %>"><%= i %></a>
             <% } %>
-
             <!-- If we are on last page, do not show the Next link to go to next page -->
             <% if(currentPage < totalPages) { %>
                 <a href="?page=<%= currentPage + 1 %>">Next</a>
             <% } %>
         </div>
-
       </main>
 </body>
 </html>

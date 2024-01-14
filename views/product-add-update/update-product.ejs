@@ -1,14 +1,14 @@
+<!-- Include header partials so that styling can be applied using bootstrap. -->
 <%- include("../partials/header") %>
 
 <div class="container mt-5">
     <h1>Update Product</h1>
-
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-
                     <!-- Makes POST request to /seller/products/update/:id route and pass the product id as path parameter. -->
+                    <!-- As the HTML form does not support the PUT and PATCH requests, POST request is used to update product. -->
                     <form action="/seller/products/update/<%= product._id %>" method="POST">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="is_active" id="flexRadioDefault1" value="true" checked>
@@ -52,10 +52,8 @@
                         </div>
                         <button type="submit" class="btn btn-dark mt-3">Submit</button>
                     </form>
-
                 </div>
             </div>
         </div>
-
     </div>
 </div>
