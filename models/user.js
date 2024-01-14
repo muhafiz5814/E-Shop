@@ -1,6 +1,8 @@
+/** Import required package */
 const mongoose = require("mongoose")
 const passportLocalMongoose = require("passport-local-mongoose")
 
+/** Create a new mongoose schema for User */
 const userSchema = new mongoose.Schema({
     first_name: String,
     last_name: String,
@@ -17,6 +19,8 @@ const userSchema = new mongoose.Schema({
     updated_at: Date
 })
 
+/** Use the passportLocalMongoose as a plugin for userSchema */
 userSchema.plugin(passportLocalMongoose)
 
+/** Export the model */
 module.exports = mongoose.model("User", userSchema)

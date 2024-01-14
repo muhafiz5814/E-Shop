@@ -1,6 +1,8 @@
+/** Import required package */
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
+/** Create a new mongoose schema for product */
 const productSchema = new mongoose.Schema({
     is_active: {type: Boolean, default: true},
     title: String,
@@ -15,4 +17,5 @@ const productSchema = new mongoose.Schema({
     product_metadata: {type: Schema.Types.ObjectId, default: null}
 })
 
+/** Export the model */
 module.exports = mongoose.model("Product", productSchema)
