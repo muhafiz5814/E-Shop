@@ -1,16 +1,14 @@
+<!-- Include header partials so that styling can be applied using bootstrap. -->
 <%- include("../partials/header") %>
 
     <body>
-
         <div class="container mt-5">
             <h1>Login</h1>
-
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-
-                            <!-- Makes POST request to /register route -->
+                            <!-- Makes POST request to /login route -->
                             <form action="/login" method="POST">
                                 <div class="form-group">
                                     <label for="email">Email</label>
@@ -20,10 +18,10 @@
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" name="password">
                                 </div>
+                                <!-- Hidden input element to know the type of user, because same login.ejs file is getting used for both the users(buyer and seller). -->
                                 <input type="hidden" name="type" value="<%= userType %>">
                                 <button type="submit" class="btn btn-dark mt-3">Login</button>
-                            </form>
-                            
+                            </form>                            
                             <!-- Ask user to Sign Up if the user is new. -->
                             <div class="mt-3">
                                 <p>New to our Website?
@@ -32,14 +30,13 @@
                                     <% } else { %>
                                         <a href="/seller/register">
                                     <% } %>
-                                    SignUp</a></p>
+                                    SignUp</a>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </body>
-
     </html>
