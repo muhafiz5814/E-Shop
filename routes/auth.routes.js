@@ -6,6 +6,7 @@ const User = require("../models/user.js")
 /** Create express router */
 const router = express.Router()
 
+/** Create authentication strategy and serialize-deserialize user. */
 passport.use(User.createStrategy())
 
 passport.serializeUser(User.serializeUser())
