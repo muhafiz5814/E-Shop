@@ -10,6 +10,7 @@ const loginRouter = require("./routes/login.routes.js")
 const authRouter = require("./routes/auth.routes.js")
 const productsRouter = require("./routes/products.routes.js")
 const sellerProductsRouter = require("./routes/seller-products.routes.js")
+const walletDetailsRouter = require("./routes/wallet-details.routes.js")
 
 /** Create an express app. */
 const app = express()
@@ -43,6 +44,7 @@ app.use("/", loginRouter)
 app.use("/", authRouter)
 app.use("/", productsRouter)
 app.use("/", sellerProductsRouter)
+app.use("/", walletDetailsRouter)
 
 /** GET route to home/starting page. */
 app.get("/", (req, res) => {
