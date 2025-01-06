@@ -52,12 +52,3 @@
 > - Sellers will be able to review their historical sales data.
 > - A transaction functionality wll be added to allow buyers to buy the products.
 
-
-## - NOTE
-> This project is not made in the form of API as I started learning React just 5 days before the assesment was given. Without that I would not be able to connect my API to the Frontend.  
-> This is why I decided to make the project as MVC formate full-stack, while I do know how to make APIs using Postman.  
-> This is not complete project till now, but will continue to make this project for my personal skill development.  
-> I will continue to update my project in another branch so that it will not affect the project that I submitted till 15th Jan 2024.  
-> Around 60%-70% logics that were used in this project, I learned in the in the go and applied them in projects and edited accordingly, which shows that I am quick to adapt and dynamic learner.
-> I just wanted to make you know that I am a passionate, skilled developer who is always learning new things.  
-> I learned a lot while making this project too and will continue to make the project to learn more.  
